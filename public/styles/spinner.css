@@ -1,0 +1,33 @@
+.spinner {
+  width: 15px;
+  height: 15px;
+  border: 3px solid var(--darker);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-parent .hide-on-spin {
+  display: block;
+}
+.spinner-parent.htmx-request .hide-on-spin {
+  display: none;
+}
+
+.spinner-parent .spinner {
+  display: none;
+}
+.spinner-parent.htmx-request .spinner {
+  display: block;
+}

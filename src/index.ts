@@ -6,7 +6,7 @@ import {
   home,
   stravaAuthRedirect,
   supabaseAuthRedirect,
-  supabaseAuthModuleWithVars,
+  supabaseAuthModule,
 } from "./pages";
 import {
   resetPassword,
@@ -19,7 +19,7 @@ import {
   updatePassword,
   updatePasswordPage,
 } from "./endpoints";
-import { PORT } from "./util/env";
+import { PORT, SUPABASE_ANON_KEY, SUPABASE_URL } from "./util/env";
 import { map } from "./endpoints/map";
 
 const app = express();
@@ -34,7 +34,7 @@ app.route("/").get(home);
 app.route("/exchangeStravaCode").get(stravaAuthRedirect);
 app.route("/exchangeSupabaseCode").get(supabaseAuthRedirect);
 
-app.get("/scripts/supabaseAuthModuleWithVars.js", supabaseAuthModuleWithVars);
+app.get("/supabaseAuthModule.js", supabaseAuthModule);
 app.post("/authChange", authChange);
 app.post("/resetPassword", resetPassword);
 

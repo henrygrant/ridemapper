@@ -12,7 +12,7 @@ interface env {
   PORT: number;
 }
 
-const PORT = process.env.PORT || 3000;
+const PORT = parseInt(process.env.PORT as string) || 3000;
 const HOST = process.env.HOST || `localhost:${PORT}`;
 
 const SUPABASE_URL = process.env.SUPABASE_URL as string;

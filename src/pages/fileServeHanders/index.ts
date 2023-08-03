@@ -1,1 +1,1 @@
-export * from "./supabaseAuthModuleWithVars";
+export * from "./supabaseAuthModule";

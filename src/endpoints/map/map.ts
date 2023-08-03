@@ -1,6 +1,6 @@
 import { createSbServerClient } from "../../util/supabaseAuthUtil";
 import { Request, Response } from "express";
-import { authenticatedView, mainView, signInView } from "../../views";
+import { authenticatedView, mainView } from "../../views";
 import { SupabaseClient } from "@supabase/supabase-js";
 
 export const map = async (req: Request, res: Response) => {
@@ -12,12 +12,15 @@ export const map = async (req: Request, res: Response) => {
     const userId = await getUserId(supabase);
     const userMeta = await getUserMeta(supabase, userId);
     const activities = await getActivities(supabase, userId);
-
-    res.send(/* html */ `
+    let ret = /* html */ `
       <div class="map-container">
         <div id="map"></div>      
       </div>
-    `);
+    `;
+    if (!req.get("hx-request")) {
+      ret = mainView(authenticatedView(ret));
+    }
+    res.send(ret);
   } catch (e) {
     console.error(e);
     res.redirect("/");

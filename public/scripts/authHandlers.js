@@ -36,18 +36,18 @@ async function signout() {
   }
   return false;
 }
-let map;
-async function initMap() {
-  const { Map } = await google.maps.importLibrary("maps");
+// let map;
+// async function initMap() {
+//   const { Map } = await google.maps.importLibrary("maps");
 
-  map = new Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
-}
+//   map = new Map(document.getElementById("map"), {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8,
+//   });
+// }
 
-document.addEventListener("htmx:afterRequest", (event) => {
-  if (event.detail.pathInfo.requestPath === "/map") {
-    initMap();
-  }
-});
+// document.addEventListener("htmx:afterRequest", (event) => {
+//   if (event.detail.pathInfo.requestPath === "/map") {
+//     initMap();
+//   }
+// });

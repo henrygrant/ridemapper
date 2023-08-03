@@ -1,5 +1,13 @@
 import { GOOGLE_MAPS_API_KEY } from "../util/env";
-
+// <script type="importmap">
+// {
+//   "imports": {
+//     "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm",
+//     "@supabase/auth-helpers-shared": "https://unpkg.com/@supabase/auth-helpers-shared@0.4.1/dist/index.mjs",
+//     "jose": "https://unpkg.com/jose/dist/browser/index.js"
+//   }
+// }
+// </script>
 export const mainView = (inner?: string) => {
   return /* html */ `
   <!DOCTYPE html>
@@ -11,24 +19,10 @@ export const mainView = (inner?: string) => {
     <link rel="stylesheet" href="/styles/spinner.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="ridemapper">
-    <script>
-      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=\`https://maps.\${c}apis.com/maps/api/js?\`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-        key: "${GOOGLE_MAPS_API_KEY}",
-        v: "weekly",
-      });
-    </script>
-    <script type="importmap">
-    {
-      "imports": {
-        "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm",
-        "@supabase/auth-helpers-shared": "https://unpkg.com/@supabase/auth-helpers-shared@0.4.1/dist/index.mjs",
-        "jose": "https://unpkg.com/jose/dist/browser/index.js"
-      }
-    }
-    </script>
+
     <script src="https://unpkg.com/htmx.org@1.9.2"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.9"></script>
-    <script type="module" src="/scripts/supabaseAuthModuleWithVars.js"></script>
+    <script type="module" src="/supabaseAuthModule.js"></script>
     <script src="/scripts/authHandlers.js"></script>
   </head>
   
